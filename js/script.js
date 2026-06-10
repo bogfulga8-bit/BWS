@@ -59,17 +59,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Define data for calculation
   const projectTypes = {
-    'landing': { name: 'Landing Page Professionale', baseCost: 1500, bwsCost: 600, traditionalDays: 14, bwsDays: 3, features: ['Moduli di contatto', 'Integrazioni Analytics', 'SEO di base', 'Responsive Design'] },
-    'website': { name: 'Sito Vetrina o Aziendale', baseCost: 3500, bwsCost: 1200, traditionalDays: 30, bwsDays: 6, features: ['Fino a 5 pagine', 'Blog / Notizie', 'Moduli contatti avanzati', 'Copywriting AI', 'Responsive Design', 'SEO Avanzata'] },
-    'webapp': { name: 'Applicazione Web Su Misura', baseCost: 8000, bwsCost: 2800, traditionalDays: 60, bwsDays: 12, features: ['Database dedicato', 'Pannello di amministrazione', 'Autenticazione utenti', 'Integrazione API esterne', 'Interfaccia reattiva'] },
-    'automation': { name: 'Automazione Processi / AI Agent', baseCost: 6000, bwsCost: 1900, traditionalDays: 45, bwsDays: 8, features: ['Integrazione ChatGPT/LLM', 'Sincronizzazione DB/CRM', 'Automazione email/lead', 'Analisi automatica dati', 'Notifiche Slack/Telegram'] }
+    'landing': { name: 'Landing Page Professionale', baseCost: 1500, bwsCost: 399, traditionalDays: 14, bwsDays: 3, features: ['Moduli di contatto', 'Integrazioni Analytics', 'SEO di base', 'Responsive Design'] },
+    'website': { name: 'Sito Vetrina o Aziendale', baseCost: 3500, bwsCost: 699, traditionalDays: 30, bwsDays: 6, features: ['Fino a 5 pagine', 'Blog / Notizie', 'Moduli contatti avanzati', 'Copywriting AI', 'Responsive Design', 'SEO Avanzata'] },
+    'webapp': { name: 'Applicazione Web Su Misura', baseCost: 8000, bwsCost: 1490, traditionalDays: 60, bwsDays: 12, features: ['Database dedicato', 'Pannello di amministrazione', 'Autenticazione utenti', 'Integrazione API esterne', 'Interfaccia reattiva'] },
+    'automation': { name: 'Automazione Processi / AI Agent', baseCost: 6000, bwsCost: 990, traditionalDays: 45, bwsDays: 8, features: ['Integrazione ChatGPT/LLM', 'Sincronizzazione DB/CRM', 'Automazione email/lead', 'Analisi automatica dati', 'Notifiche Slack/Telegram'] }
   };
 
   const extraFeatures = {
-    'chatbot': { name: 'Assistente Virtuale AI (Chatbot)', cost: 400, time: 1 },
-    'multilang': { name: 'Supporto Multilingua automatico', cost: 250, time: 1 },
-    'payments': { name: 'Integrazione Pagamenti (Stripe)', cost: 350, time: 1 },
-    'seo-premium': { name: 'Pacchetto SEO Premium + Copywriting AI', cost: 300, time: 1 }
+    'chatbot': { name: 'Assistente Virtuale AI (Chatbot)', cost: 299, time: 1 },
+    'multilang': { name: 'Supporto Multilingua automatico', cost: 199, time: 1 },
+    'payments': { name: 'Integrazione Pagamenti (Stripe)', cost: 249, time: 1 },
+    'seo-premium': { name: 'Pacchetto SEO Premium + Copywriting AI', cost: 249, time: 1 }
   };
 
   function updateCalculator() {
@@ -186,7 +186,7 @@ document.addEventListener('DOMContentLoaded', () => {
     'default': "Scusa, non ho capito bene la domanda. Posso darti informazioni sui nostri servizi, sui nostri prezzi o su come l'AI può accelerare lo sviluppo aziendale!",
     'chi_siamo': "BWS (Bogdan Web Services) è un'agenzia digitale di nuova generazione. Usiamo l'Intelligenza Artificiale per progettare e sviluppare siti web, app, automazioni e software su misura. Questo ci permette di consegnare i progetti 5 volte più velocemente della concorrenza e con costi ridotti fino al 60%, mantenendo una qualità eccellente.",
     'servizi': "Realizziamo:\n1. 🤖 **Sistemi AI & Automazioni**: chatbot intelligenti, automazione dei processi aziendali ripetitivi, integrazione LLM.\n2. 🌐 **Siti Web & Landing Pages**: siti web moderni, veloci, SEO-friendly con copywriting ottimizzato.\n3. 📱 **App Web & Mobile**: software gestionali, applicazioni personalizzate e piattaforme SaaS su misura.",
-    'prezzi': "I nostri prezzi partono da soli €600 per una Landing Page e €1.200 per un sito aziendale completo. Grazie all'AI, eliminiamo le inefficienze dello sviluppo tradizionale. Vuoi fare una prova? Usa il nostro **Calcolatore di Preventivi** qui sopra per stimare il costo del tuo progetto!",
+    'prezzi': "I nostri prezzi partono da soli €399 per una Landing Page e €699 per un sito aziendale completo. Grazie all'AI, eliminiamo le inefficienze dello sviluppo tradizionale. Vuoi fare una prova? Usa il nostro **Calcolatore di Preventivi** qui sopra per stimare il costo del tuo progetto!",
     'contatti': "Puoi scriverci direttamente compilando il modulo qui a fianco oppure inviarci un'email a **info@bws.it**. Offriamo una prima consulenza strategica gratuita di 30 minuti per analizzare le tue necessità e capire come l'AI può aiutarti!",
     'funzionamento_ai': "L'AI non sostituisce i nostri programmatori e designer, ma ne moltiplica la produttività. Usiamo strumenti avanzati di AI generativa per la scrittura del codice, la generazione di asset grafici, la traduzione automatica e la creazione di contenuti SEO. Il risultato? Software senza bug, scritti in tempi record e testati in modo impeccabile."
   };
