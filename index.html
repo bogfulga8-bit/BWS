@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="it" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BWS — Soluzioni digitali con intelligenza artificiale</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            darkBg: '#0B0813',
+            darkCard: '#131022',
+            darkCardHover: '#1A1630',
+            primaryPurple: '#7C3AED',
+            primaryPink: '#EC4899',
+            accentBlue: '#06B6D4',
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-darkBg text-gray-100 min-h-screen relative overflow-x-hidden">
+
+  <!-- Background decorative glows -->
+  <div class="glow-blur-purple top-20 left-10 opacity-30 animate-pulse-slow"></div>
+  <div class="glow-blur-pink top-[1200px] right-10 opacity-20 animate-pulse-slow" style="animation-delay: 2s"></div>
+  <div class="glow-blur-cyan bottom-40 left-1/4 opacity-20 animate-pulse-slow" style="animation-delay: 4s"></div>
+
+  <!-- HEADER / NAVIGATION -->
+  <header class="fixed top-0 left-0 w-full z-50 glass-nav transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        <!-- Logo -->
+        <a href="#home" class="flex items-center space-x-3 group">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-purple-600 to-pink-600 flex items-center justify-center shadow-lg shadow-purple-500/20 group-hover:scale-105 transition-transform duration-300">
+            <!-- Modern SVG Logo (Neural network 'B') -->
+            <svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+          </div>
+          <span class="text-2xl font-bold tracking-tight text-white font-display">BWS</span>
+        </a>
+
+        <!-- Desktop Nav Links -->
+        <nav class="hidden md:flex items-center space-x-8">
+          <a href="#home" class="nav-link text-gray-300 hover:text-white text-sm font-medium transition-colors">Home</a>
+          <a href="#servizi" class="nav-link text-gray-300 hover:text-white text-sm font-medium transition-colors">Servizi</a>
+          <a href="#preventivatore" class="nav-link text-gray-300 hover:text-white text-sm font-medium transition-colors">Preventivo AI</a>
+          <a href="#chi-siamo" class="nav-link text-gray-300 hover:text-white text-sm font-medium transition-colors">Chi Siamo</a>
+          <a href="#contatti" class="nav-link text-gray-300 hover:text-white text-sm font-medium transition-colors">Contatti</a>
+        </nav>
+
+        <!-- CTA Button -->
+        <div class="hidden md:block">
+          <a href="#contatti" class="inline-flex items-center justify-center px-5 py-2.5 rounded-xl bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white text-sm font-semibold transition-all duration-300 shadow-md shadow-purple-900/30 hover:shadow-purple-500/25 hover:-translate-y-0.5">
+            Richiedi Consulenza
+          </a>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <div class="md:hidden">
+          <button id="mobile-menu-btn" class="text-gray-400 hover:text-white focus:outline-none p-2 rounded-lg hover:bg-white/5 transition-colors">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobile-menu" class="hidden md:hidden glass-nav border-t border-white/5">
+      <div class="px-2 pt-2 pb-4 space-y-1 sm:px-3">
+        <a href="#home" class="mobile-menu-link block px-3 py-3 rounded-lg text-base font-medium text-gray-300 hover:text-white hover:bg-white/5 transition-colors">Home</a>
+        <a href="#servizi" class="mobile-menu-link block px-3 py-3 rounded-lg text-base font-medium text-gray-300 hover:text-white hover:bg-white/5 transition-colors">Servizi</a>
+        <a href="#preventivatore" class="mobile-menu-link block px-3 py-3 rounded-lg text-base font-medium text-gray-300 hover:text-white hover:bg-white/5 transition-colors">Preventivo AI</a>
+        <a href="#chi-siamo" class="mobile-menu-link block px-3 py-3 rounded-lg text-base font-medium text-gray-300 hover:text-white hover:bg-white/5 transition-colors">Chi Siamo</a>
+        <a href="#contatti" class="mobile-menu-link block px-3 py-3 rounded-lg text-base font-medium text-gray-300 hover:text-white hover:bg-white/5 transition-colors">Contatti</a>
+        <div class="pt-4 pb-2 px-3">
+          <a href="#contatti" class="mobile-menu-link block text-center px-4 py-3 rounded-xl bg-gradient-to-r from-purple-600 to-pink-600 text-white font-semibold text-base shadow-lg transition-transform duration-300 active:scale-95">
+            Richiedi Consulenza
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section id="home" class="relative pt-32 pb-20 md:pt-44 md:pb-32 overflow-hidden flex items-center min-h-[90vh]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+        <!-- Hero Text -->
+        <div class="lg:col-span-7 space-y-8 text-center lg:text-left">
+          <!-- Active Pill -->
+          <div class="inline-flex items-center space-x-2 bg-purple-950/40 border border-purple-500/30 rounded-full px-4 py-1.5 text-sm text-purple-300">
+            <span class="status-indicator">
+              <span class="status-indicator-ping"></span>
+            </span>
+            <span class="font-medium">Sviluppo Software Generativo AI</span>
+          </div>
+
+          <!-- Main Title -->
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.15] text-white">
+            BWS — Soluzioni digitali con <span class="text-gradient-purple-pink block lg:inline">intelligenza artificiale</span>
+          </h1>
+
+          <!-- Subtitle -->
+          <p class="text-lg sm:text-xl text-gray-300 max-w-2xl mx-auto lg:mx-0 font-light leading-relaxed">
+            Bogdan Web Services — Realizziamo sistemi, automazioni, siti web e app sfruttando l'intelligenza artificiale. Ottieni soluzioni digitali su misura molto più velocemente e a costi inferiori rispetto allo sviluppo tradizionale.
+          </p>
+
+          <!-- Core Benefits bullets -->
+          <div class="flex flex-col sm:flex-row justify-center lg:justify-start gap-4 text-sm text-gray-400">
+            <div class="flex items-center justify-center space-x-2">
+              <svg class="w-5 h-5 text-emerald-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+              <span>Sviluppo 5x più veloce</span>
+            </div>
+            <div class="flex items-center justify-center space-x-2">
+              <svg class="w-5 h-5 text-emerald-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+              <span>Costi ridotti del 60%</span>
+            </div>
+            <div class="flex items-center justify-center space-x-2">
+              <svg class="w-5 h-5 text-emerald-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+              <span>Supporto Dedicato H24</span>
+            </div>
+          </div>
+
+          <!-- CTAs -->
+          <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+            <a href="#contatti" class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 rounded-xl bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white font-bold transition-all duration-300 shadow-xl shadow-purple-900/40 hover:shadow-purple-500/30 hover:-translate-y-1">
+              Parlaci del tuo progetto
+            </a>
+            <a href="#servizi" class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 text-white font-semibold transition-all duration-300 hover:-translate-y-1">
+              Scopri i nostri servizi
+            </a>
+          </div>
+        </div>
+
+        <!-- Hero Visual (Interactive Floating Graphic) -->
+        <div class="lg:col-span-5 flex justify-center">
+          <div class="relative w-full max-w-md md:max-w-lg lg:max-w-none animate-float">
+            <!-- Glow background -->
+            <div class="absolute inset-0 bg-gradient-to-tr from-purple-600/20 to-pink-600/20 rounded-3xl filter blur-2xl"></div>
+            <!-- Glass container holding AI image -->
+            <div class="relative glass-panel rounded-3xl p-3 border border-white/10 overflow-hidden shadow-2xl">
+              <img src="images/hero-ai.png" alt="Intelligenza Artificiale BWS" class="rounded-2xl w-full h-auto object-cover border border-white/5">
+              
+              <!-- Mini floating dashboard badge inside hero -->
+              <div class="absolute bottom-6 left-6 right-6 bg-gray-950/80 backdrop-blur-md border border-purple-500/30 p-4 rounded-2xl flex items-center justify-between">
+                <div>
+                  <p class="text-xs text-gray-400">Progetti completati</p>
+                  <p class="text-lg font-bold text-white">Pronti in 5-10 giorni</p>
+                </div>
+                <div class="text-right">
+                  <p class="text-xs text-emerald-400 font-semibold">★ ★ ★ ★ ★</p>
+                  <p class="text-xs text-gray-400">Efficienza Garantita</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- KEY STATS BAR -->
+  <section class="py-10 border-y border-white/5 bg-gray-950/30 relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+        <div>
+          <h3 class="text-3xl sm:text-4xl font-extrabold text-gradient-purple-pink font-display">5x</h3>
+          <p class="text-xs sm:text-sm text-gray-400 mt-1">Sviluppo più veloce</p>
+        </div>
+        <div>
+          <h3 class="text-3xl sm:text-4xl font-extrabold text-gradient-cyan-purple font-display">-60%</h3>
+          <p class="text-xs sm:text-sm text-gray-400 mt-1">Costi ridotti</p>
+        </div>
+        <div>
+          <h3 class="text-3xl sm:text-4xl font-extrabold text-gradient-purple-pink font-display">100%</h3>
+          <p class="text-xs sm:text-sm text-gray-400 mt-1">Soluzione su misura</p>
+        </div>
+        <div>
+          <h3 class="text-3xl sm:text-4xl font-extrabold text-gradient-cyan-purple font-display">H24</h3>
+          <p class="text-xs sm:text-sm text-gray-400 mt-1">Supporto continuativo</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES SECTION -->
+  <section id="servizi" class="py-20 sm:py-32 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto mb-16 sm:mb-24 space-y-4">
+        <h2 class="text-purple-400 text-sm font-semibold tracking-wider uppercase">I Nostri Servizi</h2>
+        <p class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white">Sfrutta il potere dell'AI per il tuo business</p>
+        <p class="text-gray-400 font-light text-lg">Realizziamo soluzioni digitali complete in tempi record grazie allo sviluppo potenziato da intelligenza artificiale avanzata.</p>
+      </div>
+
+      <!-- Services Grid (4 main cards) -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
+        
+        <!-- CARD 1: Sistemi AI & Custom Chatbots -->
+        <div class="border-gradient-card glass-panel-hover flex flex-col justify-between overflow-hidden group">
+          <div class="p-6 sm:p-8 space-y-6">
+            <div class="w-12 h-12 rounded-xl bg-purple-950/60 border border-purple-500/30 flex items-center justify-center text-purple-400 group-hover:text-purple-300 transition-colors">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path>
+              </svg>
+            </div>
+            <div class="space-y-2">
+              <h3 class="text-2xl font-bold text-white">Sistemi AI & Chatbots</h3>
+              <p class="text-gray-300 font-light text-sm leading-relaxed">
+                Agenti conversazionali intelligenti addestrati sui tuoi dati aziendali, pronti ad assistere i clienti H24 o a fungere da assistenti interni per il tuo team, riducendo i tempi di risposta e automatizzando il supporto clienti.
+              </p>
+            </div>
+          </div>
+          <div class="px-6 pb-6 sm:px-8 sm:pb-8">
+            <img src="images/service-ai-chatbots.png" alt="Sistemi AI e Chatbots BWS" class="rounded-xl w-full h-48 object-cover border border-white/5 opacity-80 group-hover:opacity-100 transition-opacity duration-300">
+          </div>
+        </div>
+
+        <!-- CARD 2: Workflow & Automazioni -->
+        <div class="border-gradient-card glass-panel-hover flex flex-col justify-between overflow-hidden group">
+          <div class="p-6 sm:p-8 space-y-6">
+            <div class="w-12 h-12 rounded-xl bg-purple-950/60 border border-purple-500/30 flex items-center justify-center text-purple-400 group-hover:text-purple-300 transition-colors">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 1121.21 8H17"></path>
+              </svg>
+            </div>
+            <div class="space-y-2">
+              <h3 class="text-2xl font-bold text-white">Workflow & Automazioni</h3>
+              <p class="text-gray-300 font-light text-sm leading-relaxed">
+                Colleghiamo le tue applicazioni (CRM, DB, email, Slack) e creiamo pipeline automatiche che eliminano i passaggi ripetitivi. Risparmia ore di lavoro manuale con processi automatizzati integrati con modelli GPT o simili.
+              </p>
+            </div>
+          </div>
+          <div class="px-6 pb-6 sm:px-8 sm:pb-8">
+            <img src="images/service-automations.png" alt="Automazioni Processi BWS" class="rounded-xl w-full h-48 object-cover border border-white/5 opacity-80 group-hover:opacity-100 transition-opacity duration-300">
+          </div>
+        </div>
+
+        <!-- CARD 3: Siti Web & Landing Pages -->
+        <div class="border-gradient-card glass-panel-hover flex flex-col justify-between overflow-hidden group">
+          <div class="p-6 sm:p-8 space-y-6">
+            <div class="w-12 h-12 rounded-xl bg-purple-950/60 border border-purple-500/30 flex items-center justify-center text-purple-400 group-hover:text-purple-300 transition-colors">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path>
+              </svg>
+            </div>
+            <div class="space-y-2">
+              <h3 class="text-2xl font-bold text-white">Siti Web & Landing Pages</h3>
+              <p class="text-gray-300 font-light text-sm leading-relaxed">
+                Siti vetrina e landing page ad altissima conversione, curati nel copywriting (ottimizzato AI) e nel design responsive. Massima velocità di caricamento, ottimizzazione SEO avanzata per comparire subito su Google.
+              </p>
+            </div>
+          </div>
+          <div class="px-6 pb-6 sm:px-8 sm:pb-8">
+            <img src="images/service-web-apps.png" alt="Siti Web e Landing Pages BWS" class="rounded-xl w-full h-48 object-cover border border-white/5 opacity-80 group-hover:opacity-100 transition-opacity duration-300">
+          </div>
+        </div>
+
+        <!-- CARD 4: Applicazioni Web & Mobile -->
+        <div class="border-gradient-card glass-panel-hover flex flex-col justify-between overflow-hidden group">
+          <div class="p-6 sm:p-8 space-y-6">
+            <div class="w-12 h-12 rounded-xl bg-purple-950/60 border border-purple-500/30 flex items-center justify-center text-purple-400 group-hover:text-purple-300 transition-colors">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+              </svg>
+            </div>
+            <div class="space-y-2">
+              <h3 class="text-2xl font-bold text-white">Applicazioni Web & Mobile</h3>
+              <p class="text-gray-300 font-light text-sm leading-relaxed">
+                Software gestionali dedicati, portali clienti, app e piattaforme SaaS proprietarie costruite per le tue esatte esigenze di business. Codebase pulito, scalabile e sicuro, progettato 5 volte più rapidamente grazie ad assistenti AI di programmazione.
+              </p>
+            </div>
+          </div>
+          <div class="px-6 pb-6 sm:px-8 sm:pb-8">
+            <img src="images/hero-ai.png" alt="Applicazioni Web e Mobile BWS" class="rounded-xl w-full h-48 object-cover border border-white/5 opacity-80 group-hover:opacity-100 transition-opacity duration-300">
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- INTERACTIVE PREVENTIVATORE SECTION -->
+  <section id="preventivatore" class="py-20 sm:py-32 bg-gray-950/40 relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+        <h2 class="text-purple-400 text-sm font-semibold tracking-wider uppercase">Preventivo Trasparente</h2>
+        <p class="text-3xl sm:text-4xl font-extrabold text-white">Calcola il Tuo Risparmio con l'AI</p>
+        <p class="text-gray-400 font-light">Seleziona il tipo di progetto e scopri come l'efficienza dello sviluppo generativo BWS abbatte tempi e costi rispetto ad un'agenzia tradizionale.</p>
+      </div>
+
+      <!-- Preventivatore Tool -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+        
+        <!-- Inputs Panel -->
+        <div class="lg:col-span-7 glass-panel rounded-2xl p-6 sm:p-8 border border-white/5 flex flex-col justify-between">
+          <div class="space-y-6">
+            <!-- Project Type -->
+            <div class="space-y-2">
+              <label for="calc-project-type" class="block text-sm font-medium text-gray-300">Tipo di Progetto</label>
+              <select id="calc-project-type" class="w-full bg-gray-950/80 border border-purple-900/50 rounded-xl px-4 py-3 text-sm text-gray-200 focus:outline-none focus:border-purple-500">
+                <option value="landing">Landing Page Professionale</option>
+                <option value="website">Sito Vetrina o Aziendale (Completo)</option>
+                <option value="webapp" selected>Applicazione Web Su Misura (SaaS/Gestionale)</option>
+                <option value="automation">Automazione Processi / AI Agent</option>
+              </select>
+            </div>
+
+            <!-- Features checkboxes container (Generated dynamically in JS) -->
+            <div class="space-y-3">
+              <label class="block text-sm font-medium text-gray-300">Caratteristiche Aggiuntive</label>
+              <div id="calc-features" class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <!-- Checkboxes injected by JS -->
+              </div>
+            </div>
+
+            <!-- Urgency -->
+            <div class="space-y-2">
+              <label for="calc-urgency" class="block text-sm font-medium text-gray-300">Priorità di Consegna</label>
+              <select id="calc-urgency" class="w-full bg-gray-950/80 border border-purple-900/50 rounded-xl px-4 py-3 text-sm text-gray-200 focus:outline-none focus:border-purple-500">
+                <option value="normal" selected>Normale (Standard)</option>
+                <option value="urgent">Alta (Prioritaria, Consegna Urgente)</option>
+              </select>
+            </div>
+          </div>
+          
+          <div class="mt-8 border-t border-white/5 pt-6 text-xs text-gray-400">
+            *I prezzi visualizzati sono stime basate sulla complessità standard. Forniamo sempre preventivi finali dettagliati gratuiti.
+          </div>
+        </div>
+
+        <!-- Receipt / Outputs Panel -->
+        <div class="lg:col-span-5 bg-gradient-to-br from-purple-950/50 to-pink-950/20 border border-purple-500/25 rounded-2xl p-6 sm:p-8 flex flex-col justify-between shadow-xl relative overflow-hidden">
+          
+          <!-- Glowing background decorative accent -->
+          <div class="absolute -right-10 -top-10 w-40 h-40 bg-pink-500/20 rounded-full filter blur-2xl"></div>
+
+          <div class="space-y-8 relative z-10">
+            <h4 class="text-lg font-bold text-white tracking-wide uppercase border-b border-white/10 pb-3 font-display">Riepilogo Costi e Tempi</h4>
+            
+            <!-- Traditional Agency Cost -->
+            <div class="flex items-center justify-between">
+              <div>
+                <p class="text-sm text-gray-400">Sviluppo Tradizionale</p>
+                <p class="text-xs text-gray-500">(Altre agenzie / programmatori)</p>
+              </div>
+              <div class="text-right">
+                <p id="traditional-cost" class="text-xl font-bold text-gray-500 line-through">€8,000</p>
+                <p id="traditional-time" class="text-xs text-gray-500">60 giorni</p>
+              </div>
+            </div>
+
+            <!-- BWS AI-Powered Cost (Our price) -->
+            <div class="flex items-center justify-between bg-purple-950/30 border border-purple-500/30 p-4 rounded-xl">
+              <div>
+                <p class="text-sm font-bold text-purple-300">Sviluppo BWS AI</p>
+                <p class="text-xs text-purple-400 font-medium">(Efficienza Massima)</p>
+              </div>
+              <div class="text-right">
+                <p id="bws-cost" class="text-2xl sm:text-3xl font-extrabold text-white font-display">€2,800</p>
+                <p id="bws-time" class="text-xs text-emerald-400 font-bold">12 giorni</p>
+              </div>
+            </div>
+
+            <!-- Savings Badge -->
+            <div class="bg-emerald-950/50 border border-emerald-500/30 py-3 px-4 rounded-xl text-center">
+              <span id="calc-savings" class="text-sm font-bold text-emerald-400">Risparmi €5,200 (65%)</span>
+            </div>
+          </div>
+
+          <!-- CTA to apply calculation -->
+          <div class="mt-8 relative z-10">
+            <button id="calculator-cta" class="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white font-bold py-4 rounded-xl transition-all duration-300 shadow-lg shadow-purple-950/40 hover:shadow-purple-500/20 active:scale-95">
+              Richiedi questo preventivo
+            </button>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ABOUT SECTION -->
+  <section id="chi-siamo" class="py-20 sm:py-32 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+        
+        <!-- Left: Branding Visual -->
+        <div class="lg:col-span-5 flex justify-center">
+          <div class="relative w-full max-w-md">
+            <div class="absolute inset-0 bg-purple-500/10 rounded-3xl filter blur-2xl"></div>
+            <!-- Glassmorphism card -->
+            <div class="relative glass-panel rounded-3xl p-8 border border-white/5 text-center space-y-6">
+              <div class="mx-auto w-20 h-20 rounded-2xl bg-gradient-to-br from-purple-600 to-pink-600 flex items-center justify-center shadow-lg shadow-purple-500/25">
+                <span class="text-3xl font-extrabold text-white">BWS</span>
+              </div>
+              <div class="space-y-2">
+                <h4 class="text-xl font-bold text-white font-display">Bogdan Web Services</h4>
+                <p class="text-sm text-purple-400 font-semibold">Progetti di Qualità Elevata, Accelerati dall'AI</p>
+              </div>
+              <p class="text-sm text-gray-300 leading-relaxed font-light">
+                Uniamo il design italiano e la precisione di sviluppo con le più moderne tecnologie di intelligenza artificiale per dare vita alle vostre idee in tempi record.
+              </p>
+              <div class="pt-4 flex justify-center space-x-6 text-xs text-gray-400 border-t border-white/5">
+                <div>
+                  <span class="block text-white font-bold">MILANO</span>
+                  <span>Sede Operativa</span>
+                </div>
+                <div>
+                  <span class="block text-white font-bold">100%</span>
+                  <span>Made in Italy</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Text & Mission -->
+        <div class="lg:col-span-7 space-y-8 text-center lg:text-left">
+          <div class="space-y-4">
+            <h2 class="text-purple-400 text-sm font-semibold tracking-wider uppercase">Chi Siamo</h2>
+            <h3 class="text-3xl sm:text-4xl font-extrabold text-white leading-tight">Rivoluzioniamo il modo di creare il software aziendale</h3>
+          </div>
+          
+          <div class="space-y-6 text-gray-300 font-light leading-relaxed">
+            <p>
+              In <strong>BWS (Bogdan Web Services)</strong>, crediamo che lo sviluppo digitale debba essere accessibile, rapido e flessibile. Molti professionisti e imprese rinunciano a digitalizzarsi perché i costi di sviluppo tradizionale sono esorbitanti o richiedono mesi di attesa.
+            </p>
+            <p>
+              Noi abbiamo riscritto le regole del gioco. Sfruttando strumenti avanzati di <strong>Intelligenza Artificiale Generativa</strong>, i nostri esperti riescono a sviluppare siti web, landing page, app e sistemi di automazione aziendale riducendo drasticamente la scrittura manuale del codice.
+            </p>
+            <p>
+              <strong>La nostra missione:</strong> Permettere a imprese e startup di ottenere soluzioni tecnologiche robuste, professionali e completamente su misura con una velocità di rilascio 5 volte superiore e con un risparmio sui costi fino al 60%. L'AI fa il lavoro ripetitivo, noi ci mettiamo il design, l'architettura e la strategia.
+            </p>
+          </div>
+
+          <!-- Why Choose Us Checkmarks -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 text-sm text-gray-300">
+            <div class="flex items-center space-x-3">
+              <div class="flex-shrink-0 w-6 h-6 rounded-full bg-purple-950 border border-purple-500/30 flex items-center justify-center text-purple-400">
+                ✓
+              </div>
+              <span>Sviluppo rapido & efficiente</span>
+            </div>
+            <div class="flex items-center space-x-3">
+              <div class="flex-shrink-0 w-6 h-6 rounded-full bg-purple-950 border border-purple-500/30 flex items-center justify-center text-purple-400">
+                ✓
+              </div>
+              <span>Prezzi chiari e trasparenti</span>
+            </div>
+            <div class="flex items-center space-x-3">
+              <div class="flex-shrink-0 w-6 h-6 rounded-full bg-purple-950 border border-purple-500/30 flex items-center justify-center text-purple-400">
+                ✓
+              </div>
+              <span>Nessun vincolo a template standard</span>
+            </div>
+            <div class="flex items-center space-x-3">
+              <div class="flex-shrink-0 w-6 h-6 rounded-full bg-purple-950 border border-purple-500/30 flex items-center justify-center text-purple-400">
+                ✓
+              </div>
+              <span>Copywriting AI incluso nel prezzo</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA / CONTACTS SECTION (Includes AI chatbot assistant & contact form) -->
+  <section id="contatti" class="py-20 sm:py-32 bg-gray-950/20 border-t border-white/5 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+        <h2 class="text-purple-400 text-sm font-semibold tracking-wider uppercase">Contattaci Subito</h2>
+        <p class="text-3xl sm:text-4xl font-extrabold text-white">Comincia Oggi la Tua Digitalizzazione</p>
+        <p class="text-gray-400 font-light text-lg">Hai domande? Compila il modulo a destra o fai una domanda in tempo reale al nostro assistente virtuale AI qui sotto.</p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+        
+        <!-- Left: Interactive AI Assistant Chatbox -->
+        <div class="lg:col-span-5 space-y-6">
+          <div class="glass-panel border border-white/5 rounded-2xl overflow-hidden shadow-2xl flex flex-col h-[520px]">
+            <!-- Chat Header -->
+            <div class="bg-gradient-to-r from-purple-900/60 to-pink-900/30 px-6 py-4 border-b border-white/5 flex items-center justify-between">
+              <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-xl bg-purple-950 border border-purple-500/30 flex items-center justify-center text-purple-400 relative">
+                  <span class="status-indicator top-0 right-0">
+                    <span class="status-indicator-ping"></span>
+                  </span>
+                  🤖
+                </div>
+                <div>
+                  <h4 class="text-sm font-bold text-white font-display">Assistente Virtuale BWS</h4>
+                  <p class="text-xs text-emerald-400 font-medium">Attivo • Risponde istantaneamente</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Chat Message Area (JS hooks here) -->
+            <div id="chat-messages" class="flex-grow p-6 overflow-y-auto space-y-4 chat-container bg-gray-950/20">
+              <!-- Messages will be dynamically loaded here by script.js -->
+            </div>
+
+            <!-- Chat Quick Replies (JS hooks here) -->
+            <div class="px-6 py-2 border-t border-white/5 overflow-x-auto flex space-x-2 scrollbar-none" id="chat-quick-replies">
+              <!-- Quick replies buttons will be loaded here by script.js -->
+            </div>
+
+            <!-- Chat Input form -->
+            <div class="p-4 border-t border-white/5 bg-gray-950/60 flex items-center space-x-2">
+              <input type="text" id="chat-input" placeholder="Scrivi una domanda..." class="flex-grow bg-gray-900/80 border border-purple-900/40 rounded-xl px-4 py-2.5 text-sm text-gray-200 focus:outline-none focus:border-purple-500">
+              <button id="chat-send-btn" class="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white p-2.5 rounded-xl transition-all duration-300">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+          
+          <div class="text-center lg:text-left text-sm text-gray-400 px-4">
+            Puoi scriverci anche via email a <a href="mailto:info@bws.it" class="text-purple-400 hover:underline">info@bws.it</a> per qualsiasi dubbio commerciale o tecnico.
+          </div>
+        </div>
+
+        <!-- Right: Modern Lead Form -->
+        <div class="lg:col-span-7 glass-panel rounded-2xl p-6 sm:p-8 border border-white/5 shadow-2xl">
+          <form class="space-y-6">
+            <h4 class="text-xl font-bold text-white border-b border-white/10 pb-3 font-display">Invia una richiesta</h4>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <!-- Name -->
+              <div class="space-y-2">
+                <label for="name" class="block text-sm font-medium text-gray-300">Nome Completo *</label>
+                <input type="text" id="name" required class="w-full bg-gray-950/80 border border-purple-900/40 rounded-xl px-4 py-3 text-sm text-gray-200 focus:outline-none focus:border-purple-500">
+              </div>
+
+              <!-- Email -->
+              <div class="space-y-2">
+                <label for="email" class="block text-sm font-medium text-gray-300">Email Aziendale *</label>
+                <input type="email" id="email" required class="w-full bg-gray-950/80 border border-purple-900/40 rounded-xl px-4 py-3 text-sm text-gray-200 focus:outline-none focus:border-purple-500">
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <!-- Company Name -->
+              <div class="space-y-2">
+                <label for="company" class="block text-sm font-medium text-gray-300">Nome Azienda</label>
+                <input type="text" id="company" class="w-full bg-gray-950/80 border border-purple-900/40 rounded-xl px-4 py-3 text-sm text-gray-200 focus:outline-none focus:border-purple-500">
+              </div>
+
+              <!-- Project Category -->
+              <div class="space-y-2">
+                <label for="project-category" class="block text-sm font-medium text-gray-300">Servizio di Interesse</label>
+                <select id="project-category" class="w-full bg-gray-950/80 border border-purple-900/40 rounded-xl px-4 py-3 text-sm text-gray-200 focus:outline-none focus:border-purple-500">
+                  <option value="systems">Sistemi AI & Custom Chatbots</option>
+                  <option value="automations">Workflow & Automazioni</option>
+                  <option value="websites">Siti Web & Landing Pages</option>
+                  <option value="apps">Applicazioni Web & Mobile</option>
+                  <option value="consulting">Consulenza Strategica AI</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Message / Scope -->
+            <div class="space-y-2">
+              <label for="message" class="block text-sm font-medium text-gray-300">Dettagli sul Progetto *</label>
+              <textarea id="message" required rows="5" placeholder="Descrivi brevemente la tua idea o incollaci le tue richieste..." class="w-full bg-gray-950/80 border border-purple-900/40 rounded-xl px-4 py-3 text-sm text-gray-200 focus:outline-none focus:border-purple-500"></textarea>
+            </div>
+
+            <!-- Disclaimer -->
+            <div class="text-xs text-gray-400">
+              * Compilando il modulo acconsenti al trattamento dei dati personali secondo la GDPR privacy policy. Risponderemo entro 24 ore lavorative.
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white font-bold py-4 rounded-xl transition-all duration-300 shadow-lg shadow-purple-950/40 hover:shadow-purple-500/20">
+              Invia Messaggio
+            </button>
+          </form>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-gray-950 py-12 border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        
+        <!-- Column 1: Brand & Desc -->
+        <div class="space-y-4 md:col-span-2">
+          <div class="flex items-center space-x-3">
+            <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-purple-600 to-pink-600 flex items-center justify-center">
+              <svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 10V3L4 14h7v7l9-11h-7z" />
+              </svg>
+            </div>
+            <span class="text-xl font-bold tracking-tight text-white font-display">BWS</span>
+          </div>
+          <p class="text-sm text-gray-400 max-w-sm leading-relaxed">
+            Bogdan Web Services — Sviluppiamo siti, app, automazioni e sistemi intelligenti sfruttando l'Intelligenza Artificiale per rendere lo sviluppo accessibile, rapido ed economico.
+          </p>
+        </div>
+
+        <!-- Column 2: Navigation Links -->
+        <div class="space-y-4">
+          <h4 class="text-sm font-semibold text-white uppercase tracking-wider font-display">Navigazione</h4>
+          <ul class="space-y-2 text-sm text-gray-400">
+            <li><a href="#home" class="hover:text-purple-400 transition-colors">Home</a></li>
+            <li><a href="#servizi" class="hover:text-purple-400 transition-colors">Servizi</a></li>
+            <li><a href="#preventivatore" class="hover:text-purple-400 transition-colors">Preventivo AI</a></li>
+            <li><a href="#chi-siamo" class="hover:text-purple-400 transition-colors">Chi Siamo</a></li>
+            <li><a href="#contatti" class="hover:text-purple-400 transition-colors">Contatti</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Contacts & Legal -->
+        <div class="space-y-4">
+          <h4 class="text-sm font-semibold text-white uppercase tracking-wider font-display">Contatti</h4>
+          <ul class="space-y-2 text-sm text-gray-400">
+            <li>Email: <a href="mailto:info@bws.it" class="hover:text-purple-400 transition-colors">info@bws.it</a></li>
+            <li>Sede: Milano, Italia</li>
+            <li class="pt-2 text-xs text-gray-500">© 2026 Bogdan Web Services (BWS).<br>Tutti i diritti riservati.</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Social Media Bar & Bottom Legal -->
+      <div class="mt-8 pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-500">
+        <div>
+          Partita IVA: IT01234567890 • GDPR Privacy Policy • Cookie Policy
+        </div>
+        <div class="flex space-x-4">
+          <a href="#" class="hover:text-purple-400 transition-colors">LinkedIn</a>
+          <a href="#" class="hover:text-purple-400 transition-colors">Twitter (X)</a>
+          <a href="#" class="hover:text-purple-400 transition-colors">GitHub</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Custom script defer loaded -->
+  <script src="js/script.js" defer></script>
+</body>
+</html>
