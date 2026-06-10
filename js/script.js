@@ -53,16 +53,17 @@ document.addEventListener('DOMContentLoaded', () => {
   const traditionalCostEl = document.getElementById('traditional-cost');
   const bwsCostEl = document.getElementById('bws-cost');
   const savingsEl = document.getElementById('calc-savings');
+  const bwsMonthlyEl = document.getElementById('bws-monthly');
   const bwsTimeEl = document.getElementById('bws-time');
   const traditionalTimeEl = document.getElementById('traditional-time');
   const calculatorCta = document.getElementById('calculator-cta');
 
   // Define data for calculation
   const projectTypes = {
-    'landing': { name: 'Landing Page Professionale', baseCost: 1500, bwsCost: 399, traditionalDays: 14, bwsDays: 3, features: ['Moduli di contatto', 'Integrazioni Analytics', 'SEO di base', 'Responsive Design'] },
-    'website': { name: 'Sito Vetrina o Aziendale', baseCost: 3500, bwsCost: 699, traditionalDays: 30, bwsDays: 6, features: ['Fino a 5 pagine', 'Blog / Notizie', 'Moduli contatti avanzati', 'Copywriting AI', 'Responsive Design', 'SEO Avanzata'] },
-    'webapp': { name: 'Applicazione Web Su Misura', baseCost: 8000, bwsCost: 1490, traditionalDays: 60, bwsDays: 12, features: ['Database dedicato', 'Pannello di amministrazione', 'Autenticazione utenti', 'Integrazione API esterne', 'Interfaccia reattiva'] },
-    'automation': { name: 'Automazione Processi / AI Agent', baseCost: 6000, bwsCost: 990, traditionalDays: 45, bwsDays: 8, features: ['Integrazione ChatGPT/LLM', 'Sincronizzazione DB/CRM', 'Automazione email/lead', 'Analisi automatica dati', 'Notifiche Slack/Telegram'] }
+    'landing': { name: 'Landing Page Professionale', baseCost: 1500, bwsCost: 399, bwsMonthly: 19, traditionalDays: 14, bwsDays: 3, features: ['Moduli di contatto', 'Integrazioni Analytics', 'SEO di base', 'Responsive Design'] },
+    'website': { name: 'Sito Vetrina o Aziendale', baseCost: 3500, bwsCost: 699, bwsMonthly: 29, traditionalDays: 30, bwsDays: 6, features: ['Fino a 5 pagine', 'Blog / Notizie', 'Moduli contatti avanzati', 'Copywriting AI', 'Responsive Design', 'SEO Avanzata'] },
+    'webapp': { name: 'Applicazione Web Su Misura', baseCost: 8000, bwsCost: 1490, bwsMonthly: 59, traditionalDays: 60, bwsDays: 12, features: ['Database dedicato', 'Pannello di amministrazione', 'Autenticazione utenti', 'Integrazione API esterne', 'Interfaccia reattiva'] },
+    'automation': { name: 'Automazione Processi / AI Agent', baseCost: 6000, bwsCost: 990, bwsMonthly: 49, traditionalDays: 45, bwsDays: 8, features: ['Integrazione ChatGPT/LLM', 'Sincronizzazione DB/CRM', 'Automazione email/lead', 'Analisi automatica dati', 'Notifiche Slack/Telegram'] }
   };
 
   const extraFeatures = {
@@ -114,6 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
     savingsEl.textContent = `Risparmi €${savings.toLocaleString('it-IT')} (${Math.round((savings / traditionalCost) * 100)}%)`;
     
     bwsTimeEl.textContent = `${bwsDays} ${bwsDays === 1 ? 'giorno' : 'giorni'}`;
+    bwsMonthlyEl.textContent = `da €${projectData.bwsMonthly}/mese`;
     traditionalTimeEl.textContent = `${traditionalDays} giorni`;
 
     // Save calculation description for pre-filling the contact form
