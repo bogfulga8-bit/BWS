@@ -186,7 +186,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const botResponses = {
     'default': "Scusa, non ho capito bene la domanda. Posso darti informazioni sui nostri servizi, sui nostri prezzi o su come l'AI può accelerare lo sviluppo aziendale!",
-    'chi_siamo': "BWS (Bogdan Web Services) è un'agenzia digitale di nuova generazione. Usiamo l'Intelligenza Artificiale per progettare e sviluppare siti web, app, automazioni e software su misura. Questo ci permette di consegnare i progetti 5 volte più velocemente della concorrenza e con costi ridotti fino al 60%, mantenendo una qualità eccellente.",
+    'chi_siamo': "BWS (Bog Web Services) è un'agenzia digitale di nuova generazione. Usiamo l'Intelligenza Artificiale per progettare e sviluppare siti web, app, automazioni e software su misura. Questo ci permette di consegnare i progetti 5 volte più velocemente della concorrenza e con costi ridotti fino al 60%, mantenendo una qualità eccellente.",
     'servizi': "Realizziamo:\n1. 🤖 **Sistemi AI & Automazioni**: chatbot intelligenti, automazione dei processi aziendali ripetitivi, integrazione LLM.\n2. 🌐 **Siti Web & Landing Pages**: siti web moderni, veloci, SEO-friendly con copywriting ottimizzato.\n3. 📱 **App Web & Mobile**: software gestionali, applicazioni personalizzate e piattaforme SaaS su misura.",
     'prezzi': "I nostri prezzi partono da soli €399 per una Landing Page e €699 per un sito aziendale completo. Grazie all'AI, eliminiamo le inefficienze dello sviluppo tradizionale. Vuoi fare una prova? Usa il nostro **Calcolatore di Preventivi** qui sopra per stimare il costo del tuo progetto!",
     'contatti': "Puoi scriverci direttamente compilando il modulo qui a fianco oppure inviarci un'email a **info@bws.it**. Offriamo una prima consulenza strategica gratuita di 30 minuti per analizzare le tue necessità e capire come l'AI può aiutarti!",
@@ -292,7 +292,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (chatMessagesContainer) {
     // Initial bot message
     setTimeout(() => {
-      addMessage("Ciao! Sono l'assistente virtuale di **BWS (Bogdan Web Services)** 🤖. Come posso aiutarti oggi? Scegli una delle domande frequenti qui sotto o scrivimi direttamente!", 'bot');
+      addMessage("Ciao! Sono l'assistente virtuale di **BWS (Bog Web Services)** 🤖. Come posso aiutarti oggi? Scegli una delle domande frequenti qui sotto o scrivimi direttamente!", 'bot');
       setupQuickReplies();
     }, 500);
 
