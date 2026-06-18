@@ -1,0 +1,1 @@
+"""Call manager package — session state and orchestration."""

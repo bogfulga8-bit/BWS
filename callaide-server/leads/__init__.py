@@ -1,0 +1,1 @@
+"""Leads package — structured lead data storage and retrieval."""

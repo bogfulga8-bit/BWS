@@ -1,0 +1,1 @@
+"""Audio pipeline package — STT → LLM → TTS real-time processing."""

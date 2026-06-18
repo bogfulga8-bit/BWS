@@ -1,0 +1,1 @@
+"""Knowledge base package — client config and system prompt compilation."""

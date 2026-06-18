@@ -1,0 +1,1 @@
+"""Summarizer package — post-call summary generation and delivery."""
